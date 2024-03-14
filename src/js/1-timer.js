@@ -1,12 +1,25 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 const input = document.getElementById('datetime-picker');
-const button = document.querySelector('button');
-button.addEventListener('click', () => {
-  button.setAttribute('disabled', '');
-  return window.alert('Please choose a date in the future');
-});
+const startBtn = document.querySelector('button');
 let userSelectedDate = null;
+startBtn.addEventListener('click', () => {
+  const repeatTime = setInterval(() => {
+    interval = userSelectedDate - new Date();
+    if (interval < 1) {
+      startBtn.disabled = true;
+      clearInterval(repeatTime);
+      return;
+    }
+    const timer = convertMs(interval);
+
+    showTime[0].innerText = timer.days.toString().padStart(2, '0');
+    showTime[1].innerText = timer.hours.toString().padStart(2, '0');
+    showTime[2].innerText = timer.minutes.toString().padStart(2, '0');
+    showTime[3].innerText = timer.seconds.toString().padStart(2, '0');
+  }, 1000);
+});
+
 const options = {
   enableTime: true,
   time_24hr: true,
