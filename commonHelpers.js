@@ -1,2 +1,2 @@
-import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */import{f as t}from"./assets/vendor-2b44ac2e.js";t(".input#datetime-picker",{options:n});const n={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose(e){console.log(e[0])}};new Data("2023-10-081T7:25");new Data;
+import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */import{f as n}from"./assets/vendor-2b44ac2e.js";const o=document.getElementById("datetime-picker"),e=document.querySelector("button");e.addEventListener("click",()=>{e.setAttribute("disabled","")});const i={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose(t){t[0],console.log(t[0])}};n(o,i);
 //# sourceMappingURL=commonHelpers.js.map
