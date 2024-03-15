@@ -8,7 +8,6 @@ delayForm.addEventListener('submit', event => {
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log(timer, radio);
       if (radio === 'fulfilled') {
         resolve();
       } else {
