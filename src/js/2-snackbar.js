@@ -3,6 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 const form = document.querySelector('form');
 const submitBtn = document.querySelector('submit');
 submitBtn.addEventListener('submit', () => {
+  preventDefault();
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {
