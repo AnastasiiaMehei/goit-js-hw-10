@@ -2,7 +2,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 const form = document.querySelector('form');
 const submitBtn = document.querySelector('submit');
-form.addEventListener('submit', handleClickBtn);
+submitBtn.addEventListener('submit', handleClickBtn);
 function handleClickBtn() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
