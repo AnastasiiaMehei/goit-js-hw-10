@@ -9,7 +9,7 @@ form.addEventListener('submit', evt => {
   evt.preventDefault();
   const delay = parseInt(delayInput);
   const promise = new Promise((resolve, reject) => {
-    if (stateInputa && stateInput == 'fulfilled') {
+    if (stateInputa && stateInput.targer.delay.value == 'fulfilled') {
       setTimeout(() => {
         resolve(delay);
       }, delay);
