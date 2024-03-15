@@ -1,27 +1,11 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const input = document.getElementById('datetime-picker');
-const startBtn = document.querySelector('button');
-let userSelectedDate = null;
-startBtn.addEventListener('click', () => {
-  const repeatTime = setInterval(() => {
-    interval = userSelectedDate - new Date();
-    if (interval < 1) {
-      startBtn.disabled = true;
-      clearInterval(repeatTime);
-      return;
-    }
-    const timer = convertMs(interval);
-
-    showTime[0].innerText = timer.days.toString().padStart(2, '0');
-    showTime[1].innerText = timer.hours.toString().padStart(2, '0');
-    showTime[2].innerText = timer.minutes.toString().padStart(2, '0');
-    showTime[3].innerText = timer.seconds.toString().padStart(2, '0');
-  }, 1000);
-});
+let userSelectedDate;
+let timeInterval;
 
 const options = {
   enableTime: true,
@@ -30,10 +14,20 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
-    console.log(selectedDates[0]);
+    timeInterval = userSelectedDate - new Date();
+    if (timeInterval < 1) {
+      iziToast.error({
+        color: 'red',
+        position: 'topRight',
+        message: `Please choose a date in the future`,
+      });
+    } else {
+      startBtn.disabled = false;
+      inputTime.disabled = true;
+      startBtn.classList.add(`btn-active`);
+    }
   },
 };
-flatpickr(input, options);
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -54,6 +48,28 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+const calendar = flatpickr('#datetime-picker', options);
+const inputTime = document.querySelector('#datetime-picker');
+const startBtn = document.querySelector('button');
+const showTime = document.querySelectorAll('.value');
+
+console.log(showTime);
+
+startBtn.disabled = true;
+
+startBtn.addEventListener('click', event => {
+  const repeatTime = setInterval(() => {
+    timeInterval = userSelectedDate - new Date();
+    startBtn.classList.remove(`btn-active`);
+    if (timeInterval < 1) {
+      startBtn.disabled = true;
+      clearInterval(repeatTime);
+      return;
+    }
+    const timer = convertMs(timeInterval);
+    showTime[0].innerText = timer.days.toString().padStart(2, '0');
+    showTime[1].innerText = timer.hours.toString().padStart(2, '0');
+    showTime[2].innerText = timer.minutes.toString().padStart(2, '0');
+    showTime[3].innerText = timer.seconds.toString().padStart(2, '0');
+  }, 1000);
+});
