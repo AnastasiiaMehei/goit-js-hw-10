@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding-left: 10px;
+}
+.form {
+  width: 360px;
+  display: block;
+  margin-top: 0em;
+}
+.delay {
+  width: 360px;
+  height: 72px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  display: flex;
+  flex-direction: column;
+}
+.fieldset {
+  height: 78px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+label {
+  font: 400 16px / 1.5 Montserrat, sans-serif;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.input {
+  width: auto;
+  height: auto;
+}
+.submit {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 360px;
+  height: 40px;
+  background: #4e75ff;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border-radius: none;
+}

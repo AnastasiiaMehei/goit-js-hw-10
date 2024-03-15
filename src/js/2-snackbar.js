@@ -4,12 +4,12 @@ const form = document.querySelector('form');
 const delayInput = parseInt(
   document.querySelector("input[name='delay']".value)
 );
-const steteInput = document.querySelector("input[name='state']:checked");
+const stateInput = document.querySelector("input[name='state']:checked");
 form.addEventListener('submit', evt => {
   evt.preventDefault();
   const delay = parseInt(delayInput);
   const promise = new Promise((resolve, reject) => {
-    if (stateInputa && stateInput.targer.delay.value == 'fulfilled') {
+    if (stateInput.value == 'fulfilled') {
       setTimeout(() => {
         resolve(delay);
       }, delay);
