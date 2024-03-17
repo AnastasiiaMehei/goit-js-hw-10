@@ -5,7 +5,6 @@
 .input {
   border: 1px solid #808080;
   border-radius: 4px;
-  width: 272px;
   height: 40px;
   border-radius: 4px;
   width: 256px;
@@ -20,19 +19,26 @@
   padding: 16px 16px;
 }
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
   border-radius: 8px;
   padding: 8px 16px;
-  width: 75px;
+  width: 95px;
   height: 40px;
-  background: #cfcfcf;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
+  background: #4e75ff;
+  font: 500 16px / 1.5 Montserrat, sans-serif;
   letter-spacing: 0.04em;
-  color: #989898;
+  color: #fff;
   cursor: pointer;
-  outline: transparent;
   border: none;
+}
+
+.button[disabled] {
+  background: #cfcfcf;
+  color: #989898;
 }
 /* .button:hover {
   background: #6c8cff;
