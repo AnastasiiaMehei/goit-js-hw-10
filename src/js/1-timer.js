@@ -22,7 +22,6 @@ const options = {
       });
     } else {
       startBtn.disabled = false;
-      inputTime.disabled = true;
       startBtn.classList.add(`btn-active`);
     }
   },
@@ -49,12 +48,13 @@ function convertMs(ms) {
 
 const calendar = flatpickr('#datetime-picker', options);
 const inputTime = document.querySelector('#datetime-picker');
-const startBtn = document.querySelector('button');
-const showTime = document.querySelectorAll('.value');
+const startBtn = document.querySelector('button[data-start]');
+const spanDays = document.querySelector('span[data-days]');
+const spanHours = document.querySelector('span[data-hours]');
+const spanMinutes = document.querySelector('span[data-minutes]');
+const spanSeconds = document.querySelector('span[data-seconds]');
 
-console.log(showTime);
-
-startBtn.disabled = true;
+// startBtn.disabled = true;
 
 startBtn.addEventListener('click', event => {
   const repeatTime = setInterval(() => {
@@ -66,9 +66,9 @@ startBtn.addEventListener('click', event => {
       return;
     }
     const timer = convertMs(timeInterval);
-    showTime[0].innerText = timer.days.toString().padStart(2, '0');
-    showTime[1].innerText = timer.hours.toString().padStart(2, '0');
-    showTime[2].innerText = timer.minutes.toString().padStart(2, '0');
-    showTime[3].innerText = timer.seconds.toString().padStart(2, '0');
+    spanDays.innerText = timer.days.toString().padStart(2, '0');
+    spanHours.innerText = timer.hours.toString().padStart(2, '0');
+    spanMinutes.innerText = timer.minutes.toString().padStart(2, '0');
+    spanSeconds.innerText = timer.seconds.toString().padStart(2, '0');
   }, 1000);
 });

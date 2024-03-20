@@ -3,15 +3,15 @@ import 'izitoast/dist/css/iziToast.min.css';
 const delayForm = document.querySelector('.form');
 delayForm.addEventListener('submit', event => {
   event.preventDefault();
-  const timer = event.currentTarget.elements.delay.value;
+  const timer = Number(event.currentTarget.elements.delay.value);
   const radio = event.currentTarget.elements.state.value;
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (radio === 'fulfilled') {
-        resolve();
+        resolve(`Filfiled promise in ${timer}ms`);
       } else {
-        reject();
+        reject(`Rejected promise in ${timer}ms`);
       }
     }, timer);
   });
@@ -20,14 +20,14 @@ delayForm.addEventListener('submit', event => {
   promise
     .then(value => {
       iziToast.success({
-        color: 'green',
+        backgroundColor: 'green',
         position: 'topRight',
         message: `✅ Fulfilled promise in ${timer}ms`,
       });
     })
     .catch(error => {
       iziToast.error({
-        color: 'red',
+        backgroundColor: 'red',
         position: 'topRight',
         message: `❌ Rejected promise in ${timer}ms`,
       });
