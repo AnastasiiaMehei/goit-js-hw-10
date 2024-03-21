@@ -16,13 +16,16 @@ const options = {
     timeInterval = userSelectedDate - new Date();
     if (timeInterval < 1) {
       iziToast.error({
-        color: 'red',
+        backgroundColor: 'red',
         position: 'topRight',
         message: `Please choose a date in the future`,
       });
     } else {
-      startBtn.disabled = false;
-      startBtn.classList.add(`btn-active`);
+      document.querySelector('button[data-start]').removeAttribute('disabled');
+      window.clearInterval(repeatTime);
+      // startBtn.disabled = false;
+
+      // startBtn.classList.add(`btn-active`);
     }
   },
 };
@@ -46,17 +49,17 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-const calendar = flatpickr('#datetime-picker', options);
 const inputTime = document.querySelector('#datetime-picker');
+flatpickr(inputTime, options);
 const startBtn = document.querySelector('button[data-start]');
 const spanDays = document.querySelector('span[data-days]');
 const spanHours = document.querySelector('span[data-hours]');
 const spanMinutes = document.querySelector('span[data-minutes]');
 const spanSeconds = document.querySelector('span[data-seconds]');
 
-startBtn.disabled = true;
-
 startBtn.addEventListener('click', event => {
+  startBtn.disabled = true;
+
   const repeatTime = setInterval(() => {
     timeInterval = userSelectedDate - new Date();
     startBtn.classList.remove(`btn-active`);
