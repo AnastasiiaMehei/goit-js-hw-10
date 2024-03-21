@@ -21,6 +21,7 @@ form.addEventListener('submit', e => {
   promise.then(
     value => {
       iziToast.success({
+        title: 'Success',
         backgroundColor: 'green',
         position: 'topRight',
         message: `✅ Fulfilled promise in ${inputDelay}ms`,
@@ -28,6 +29,7 @@ form.addEventListener('submit', e => {
     },
     error => {
       iziToast.error({
+        title: 'Error',
         backgroundColor: 'red',
         position: 'topRight',
         message: `❌ Rejected promise in ${inputDelay}ms`,
