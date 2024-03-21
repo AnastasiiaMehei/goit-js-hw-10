@@ -9,9 +9,9 @@ delayForm.addEventListener('submit', event => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (radio === 'fulfilled') {
-        resolve(`Filfiled promise in ${timer}ms`);
+        resolve(`✅Fulfilled promise in ${timer}ms`);
       } else {
-        reject(`Rejected promise in ${timer}ms`);
+        reject(`❌Rejected promise in ${timer}ms`);
       }
     }, timer);
   });

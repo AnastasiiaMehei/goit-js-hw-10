@@ -54,7 +54,7 @@ const spanHours = document.querySelector('span[data-hours]');
 const spanMinutes = document.querySelector('span[data-minutes]');
 const spanSeconds = document.querySelector('span[data-seconds]');
 
-// startBtn.disabled = true;
+startBtn.disabled = true;
 
 startBtn.addEventListener('click', event => {
   const repeatTime = setInterval(() => {
