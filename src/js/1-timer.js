@@ -2,30 +2,27 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
-let userSelectedDate;
 let timeInterval;
-
+let userSelectedDate;
+// let startingDate;
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    userSelectedDate = selectedDates[0];
-    timeInterval = userSelectedDate - new Date();
-    if (timeInterval < 1) {
-      iziToast.error({
-        backgroundColor: 'red',
-        position: 'topRight',
-        message: `Please choose a date in the future`,
-      });
-    } else {
+    console.log(selectedDates[0]);
+    if (selectedDates[0].getTime() > Date.now()) {
       document.querySelector('button[data-start]').removeAttribute('disabled');
-      window.clearInterval(repeatTime);
-      // startBtn.disabled = false;
-
-      // startBtn.classList.add(`btn-active`);
+      userSelectedDate = selectedDates[0];
+      startingDate = new Date();
+    } else {
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+        position: 'topRight',
+      });
+      clearInterval(setTimer);
     }
   },
 };
